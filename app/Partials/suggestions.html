@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-3">
+        <img ng-src="{{suggestion.picture}}">
+    </div>
+    <div class="col-md-7">
+        <h1 class="text-center text-primary">{{suggestion.result}}</h1>
+        <p>{{suggestion.resolution}}</p>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <h2>{{suggestion.header}}</h2>
+        <p>{{suggestion.description}}</p>
+        <div ng-repeat="method in suggestion.methods track by $index" class="method ">
+            <h5 class="text-info">Метод {{($index+1)}} из {{suggestion.methods.length}}. {{method.header}}</h5>
+            <div ng-repeat="suggestion in method.suggestions track by $index">
+            <div class="suggestionNumber">{{$index + 1}}</div>
+            <p class="suggestion">{{suggestion}}</p>
+            </div>
+                <!--div class="suggestionNumber">{{suggestion.$index + 1}}</div-->
+                
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>

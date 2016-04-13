@@ -1,0 +1,35 @@
+   <div class="row">
+        <div class="col-md-2"> </div>
+        <div class="col-md-6">
+
+            <div id="id-suggesion" class="suggestion" ng-controller="FoodsController">
+                <form role="form" class="form-inline" ng-submit="submit()">
+                    <div class="form-group row">
+                        <div class="col-md-2">
+                            <label for="input">Foods</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="input" name="string" class="form-control" type="text" autocomplete="off" ng-model="query" 
+                            ng-keyup='getFilteredList($event)' 
+                            key-navigation>
+                            <ul class="emptyList" ng-model="list" id="list">
+                              <li ng-model = "item" ng-repeat="food in filteredFoods | filter: filterText | limitTo: limit track by $index" 
+                              ng-click="add(food.name)" 
+                              ng-mouseover="addActive($index)"
+                              ng-mouseleave="removeActive($index)">
+                              {{food.name}}
+                              </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-success">Send</button>
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-4"> </div>
+    </div>

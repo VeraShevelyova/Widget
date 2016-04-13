@@ -1,0 +1,63 @@
+/* app css stylesheet */
+.active {
+  background-color : grey;
+  opacity : 0.4;
+}
+
+.focused {
+  border: 4px, solid;
+  border-color: rgba(0, 90, 255, 0.64);
+}
+
+.suggestion .form-control {
+  width: 100%;
+}
+
+li {
+  width: 100%;
+  list-style-type: none;
+}
+
+ul {
+  padding: 0;
+  border: 1px solid #aaaaaa;
+
+}
+
+.form-group.row {
+  display: block;
+}
+
+.emptyList{
+  display: none;
+}
+
+.method{
+  padding: 10px;
+}
+
+.suggestion{
+  padding:5px;
+}
+
+.suggestionNumber{
+  float: left;
+  font-size: 43px;
+  padding: 8px 15px 3px 0;
+  font-weight: bold;
+}
+
+h1{
+  padding: 40px;
+}
+
+h2{
+  padding: 20px;
+  font-size: 40px;
+}
+
+h5{
+  padding: 0px;
+  font-size: 30px;
+  font-style: oblique;
+}

@@ -1,0 +1,11 @@
+{ "fruits" : [
+{"name" :"apple", "weight" :7}, 
+{"name" :"cherry", "weight" :1}, 
+{"name" :"potato", "weight": 15}, 
+{"name" :"orange", "weight"  : 7},
+{"name" :"cucumber", "weight"  :3},
+{"name" :"green apple" , "weight" : 8},
+{"name" :"red apple" , "weight" : 6},
+{"name" :"greens" , "weight" : 15}
+	]
+}
