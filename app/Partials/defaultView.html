@@ -13,11 +13,12 @@
                             <input id="input" name="string" class="form-control" type="text" autocomplete="off" ng-model="query" 
                             ng-keyup='getFilteredTipsList($event)' 
                             key-navigation>
-                            <ul class="emptyList tips" ng-model="tipsList" id="tips">
-                              <li ng-model = "item" ng-repeat="food in filteredFoods | filter: filterText | limitTo: limit track by $index" 
-                              ng-click="addTipToInput(food.name)" 
+                            <ul class="emptyList" ng-model="tipsList" id="tips">
+                              <li ng-model = "item" 
+                              ng-repeat="tip in filteredTips| filter: filterText | limitTo: tipsLimit track by $index" 
+                              ng-click="addTipToInput(tip.name)" 
                               ng-mouseover="setTipActive($index)">
-                              {{food.name}}
+                              {{tip.name}}
                               </li>
                             </ul>
                         </div>
@@ -31,5 +32,5 @@
 
             </div>
         </div>
-        <div class="col-md-4"> </div>
+        <div class="col-md-4"></div>
     </div>

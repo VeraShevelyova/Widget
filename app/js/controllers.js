@@ -7,14 +7,14 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
     function($scope, $location, Tips) {
     $scope.filterText = ""
     $scope.x = -1;
-    $scope.limit = 5;
-    $scope.foods = [];
+    $scope.tipsLimit = 5;
+    $scope.tips = [];
 
     var tipsList = angular.element(document.querySelector('ul'));
 
     Tips.get({}, function(data){
-        $scope.foods = data.fruits;
-        $scope.filteredFoods = [];
+        $scope.tips = data.fruits;
+        $scope.filteredTips = [];
     });
 
     $scope.addTipToInput = function(elem) {
@@ -29,9 +29,10 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
     		event.preventDefault();
     		$scope.navigateViaKeyBoard(keyCode);
     	} else {
-    		tipsList[0].classList.remove("emptyList");
         	$scope.filterText = $scope.query.substring($scope.query.lastIndexOf(',') + 1).trim();
-        	$scope.filteredFoods = $scope.foods
+        	$scope.filteredTips = $scope.tips;
+            if($scope.filteredTips.length > 0)
+            tipsList[0].classList.remove("emptyList");
         }
     }
 
@@ -45,7 +46,7 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
     };
 
     $scope.emptyTipsList = function(){
-        $scope.filteredFoods = [];
+        $scope.filteredTips = [];
         tipsList[0].classList.add('emptyList');
     }
 
@@ -74,7 +75,7 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
             $scope.setTipActive($scope.x);
         } else if (keyCode == 13) {
             $scope.addTipOnEnterClick();
-            $scope.filteredFoods = [];
+            $scope.filteredTips = [];
             $scope.x = -1;
         } else return;
     }
@@ -91,15 +92,15 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
     }
 
     $scope.getWeight = function(){
-        var selectedFoods = $scope.query.split(',');
-        if(selectedFoods[selectedFoods.splice.length - 1].trim() == "")
-        selectedFoods.splice(selectedFoods.splice.length - 1);
+        var selectedTips = $scope.query.split(',');
+        if(selectedTips[selectedTips.length - 1].trim() == "")
+        selectedTips.splice(selectedTips.splice.length - 1);
         var weight = 0;
 
-        selectedFoods.forEach(function(selectedFood){
-            $scope.foods.forEach(function(food){
-                if(food.name == selectedFood.trim())
-                    weight = weight + food.weight;
+        selectedTips.forEach(function(selectedTip){
+            $scope.tips.forEach(function(tip){
+                if(tip.name == selectedTip.trim())
+                    weight = weight + tip.weight;
             })
         });
 
