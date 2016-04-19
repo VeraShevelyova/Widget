@@ -28,10 +28,10 @@ describe('Widget controllers', function() {
 
 
     it('should create the list of tips with 2 items in it', function() {
-      expect(scope.foods).toEqualData([]);
+      expect(scope.tips).toEqualData([]);
       $httpBackend.flush();
 
-      expect(scope.foods).toEqualData(
+      expect(scope.tips).toEqualData(
           [{name: 'apple'}, {name: 'cherry'}]);
     });
 
