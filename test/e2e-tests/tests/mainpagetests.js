@@ -104,12 +104,12 @@ describe('my app', function() {
             expect(currentUrl).toContain('/foods/normal');
         });
 
-        it('check alert message for "normal racion"', function() {
+        it('check alert message for "overweight racion"', function() {
             page.typeTextInInput('potato, potato');
             page.submit();
             var alert = browser.switchTo().alert();
             expect(alert.getText()).
-            toBe('You it too much today, you will get fat. It is 30');
+            toBe('You eat too much today, you will get fat. It is 30');
             alert.then(function(alert) {
                 alert.accept();
             });

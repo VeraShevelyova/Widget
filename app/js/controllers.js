@@ -59,7 +59,7 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
                  + weight);
             $location.url('/foods/normal');
         } else{
-            alert("You it too much today, you will get fat. It is " 
+            alert("You eat too much today, you will get fat. It is " 
                  + weight);
             $location.url('/foods/overweight');
         }
