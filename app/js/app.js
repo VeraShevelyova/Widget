@@ -3,7 +3,8 @@
 var myApp = angular.module('myApp', [
   'ngRoute',
   'controllers',
-  'suggestionServices'
+  'suggestionServices',
+  'directives'
 ]);
 
 myApp.config(['$routeProvider',
@@ -11,11 +12,11 @@ myApp.config(['$routeProvider',
     $routeProvider.
       when('/foods', {
         templateUrl: 'Partials/defaultView.html',
-        controller: 'FoodsController'
+        controller: 'DefaultViewController'
       }).
       when('/foods/:suggestionId', {
         templateUrl: 'Partials/suggestions.html',
-        controller: 'ActionController'
+        controller: 'SuggestionController'
       }).
       otherwise({
         redirectTo: '/foods'

@@ -2,21 +2,21 @@
         <div class="col-md-2"> </div>
         <div class="col-md-6">
 
-            <div id="id-suggesion" class="suggestion" ng-controller="FoodsController">
-                <form role="form" class="form-inline" ng-submit="submit()">
+            <div id="id-inputWithTips" class="inputWithTips" ng-controller="DefaultViewController" 
+            on-document-click="emptyTipsList($event)">
+                <form role="form" class="form-inline" ng-submit="submit($event)">
                     <div class="form-group row">
                         <div class="col-md-2">
                             <label for="input">Foods</label>
                         </div>
                         <div class="col-md-6">
                             <input id="input" name="string" class="form-control" type="text" autocomplete="off" ng-model="query" 
-                            ng-keyup='getFilteredList($event)' 
+                            ng-keyup='getFilteredTipsList($event)' 
                             key-navigation>
-                            <ul class="emptyList" ng-model="list" id="list">
+                            <ul class="emptyList tips" ng-model="tipsList" id="tips">
                               <li ng-model = "item" ng-repeat="food in filteredFoods | filter: filterText | limitTo: limit track by $index" 
-                              ng-click="add(food.name)" 
-                              ng-mouseover="addActive($index)"
-                              ng-mouseleave="removeActive($index)">
+                              ng-click="addTipToInput(food.name)" 
+                              ng-mouseover="setTipActive($index)">
                               {{food.name}}
                               </li>
                             </ul>

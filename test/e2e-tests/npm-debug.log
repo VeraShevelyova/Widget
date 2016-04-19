@@ -1,0 +1,49 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'run',
+1 verbose cli   'protractor' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 verbose run-script [ 'preprotractor', 'protractor', 'postprotractor' ]
+5 info lifecycle angular-seed@0.0.0~preprotractor: angular-seed@0.0.0
+6 verbose lifecycle angular-seed@0.0.0~preprotractor: unsafe-perm in lifecycle true
+7 verbose lifecycle angular-seed@0.0.0~preprotractor: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/vshevelyova/Desktop/JS_folder/Widget_Angular1/angular-seed/Widget/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+8 verbose lifecycle angular-seed@0.0.0~preprotractor: CWD: /Users/vshevelyova/Desktop/JS_folder/Widget_Angular1/angular-seed/Widget
+9 silly lifecycle angular-seed@0.0.0~preprotractor: Args: [ '-c', 'npm run update-webdriver' ]
+10 silly lifecycle angular-seed@0.0.0~preprotractor: Returned: code: 0  signal: null
+11 info lifecycle angular-seed@0.0.0~protractor: angular-seed@0.0.0
+12 verbose lifecycle angular-seed@0.0.0~protractor: unsafe-perm in lifecycle true
+13 verbose lifecycle angular-seed@0.0.0~protractor: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/vshevelyova/Desktop/JS_folder/Widget_Angular1/angular-seed/Widget/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+14 verbose lifecycle angular-seed@0.0.0~protractor: CWD: /Users/vshevelyova/Desktop/JS_folder/Widget_Angular1/angular-seed/Widget
+15 silly lifecycle angular-seed@0.0.0~protractor: Args: [ '-c', 'protractor e2e-tests/protractor.conf.js' ]
+16 silly lifecycle angular-seed@0.0.0~protractor: Returned: code: 1  signal: null
+17 info lifecycle angular-seed@0.0.0~protractor: Failed to exec protractor script
+18 verbose stack Error: angular-seed@0.0.0 protractor: `protractor e2e-tests/protractor.conf.js`
+18 verbose stack Exit status 1
+18 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+18 verbose stack     at emitTwo (events.js:87:13)
+18 verbose stack     at EventEmitter.emit (events.js:172:7)
+18 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+18 verbose stack     at emitTwo (events.js:87:13)
+18 verbose stack     at ChildProcess.emit (events.js:172:7)
+18 verbose stack     at maybeClose (internal/child_process.js:818:16)
+18 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+19 verbose pkgid angular-seed@0.0.0
+20 verbose cwd /Users/vshevelyova/Desktop/JS_folder/Widget_Angular1/angular-seed/Widget/e2e-tests
+21 error Darwin 14.5.0
+22 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "run" "protractor"
+23 error node v5.0.0
+24 error npm  v3.3.6
+25 error code ELIFECYCLE
+26 error angular-seed@0.0.0 protractor: `protractor e2e-tests/protractor.conf.js`
+26 error Exit status 1
+27 error Failed at the angular-seed@0.0.0 protractor script 'protractor e2e-tests/protractor.conf.js'.
+27 error This is most likely a problem with the angular-seed package,
+27 error not with npm itself.
+27 error Tell the author that this fails on your system:
+27 error     protractor e2e-tests/protractor.conf.js
+27 error You can get their info via:
+27 error     npm owner ls angular-seed
+27 error There is likely additional logging output above.
+28 verbose exit [ 1, true ]

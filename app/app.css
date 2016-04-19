@@ -9,7 +9,7 @@
   border-color: rgba(0, 90, 255, 0.64);
 }
 
-.suggestion .form-control {
+.inputWithTips .form-control {
   width: 100%;
 }
 
@@ -36,7 +36,7 @@ ul {
   padding: 10px;
 }
 
-.suggestion{
+.inputWithTips{
   padding:5px;
 }
 
