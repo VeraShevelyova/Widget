@@ -2,9 +2,10 @@
 
 var mainPage = function(){
   var input = element(by.id('input'));
-  var inputSelector = "$('#input')";
   var tipItems = element.all(by.css('.inputWithTips li'));
   var submitButton = element(by.buttonText('Send'));
+
+  this.inputSelector = $('#input');
 
   this.typeTextInInput = function(text){
      input.sendKeys(text);

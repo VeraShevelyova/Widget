@@ -75,7 +75,7 @@ describe('my app', function() {
             page.typeTextInInput('r');
             page.mouseClickOnElement(page.getTipItem(0));
             var EC = protractor.ExpectedConditions;
-            browser.wait(EC.textToBePresentInElementValue($('#input'), ' cherry, '), 1000);
+            browser.wait(EC.textToBePresentInElementValue(page.inputSelector, ' cherry, '), 1000);
         });
 
         it('select several tips on mouseclick', function() {
@@ -85,7 +85,7 @@ describe('my app', function() {
             textsToType.forEach(function(textToType, index) {
                 page.typeTextInInput(textToType);
                 page.mouseClickOnElement(page.getTipItem(0));
-                browser.wait(EC.textToBePresentInElementValue($('#input'), 
+                browser.wait(EC.textToBePresentInElementValue(page.inputSelector, 
                 expectedInputTexts[index]), 1000);
             });
         });
@@ -104,7 +104,7 @@ describe('my app', function() {
         });
 
         it('check alert message for "overweight racion"', function() {
-            page.typeTextInInput('potato, potato');
+            page.typeTextInInput('potato, potato,');
             page.submit();
             var alert = browser.switchTo().alert();
             expect(alert.getText()).
