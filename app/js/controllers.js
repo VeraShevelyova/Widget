@@ -94,7 +94,7 @@ controllers.controller('DefaultViewController', ['$scope', '$location', 'Tips',
     $scope.getWeight = function(){
         var selectedTips = $scope.query.split(',');
         if(selectedTips[selectedTips.length - 1].trim() == "")
-        selectedTips.splice(selectedTips.splice.length - 1);
+        selectedTips.splice(-1, 1);
         var weight = 0;
 
         selectedTips.forEach(function(selectedTip){
