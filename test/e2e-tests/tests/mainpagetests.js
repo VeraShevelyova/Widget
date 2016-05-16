@@ -18,76 +18,75 @@ describe('my app', function() {
 
         it('should filter tips in dropdown based on text typed in input', function() {
             page.typeTextInInput('ap');
-            expect(page.getTipItemsCount()).toBe(3);
+            var expectedTipItems = ['apple', 'green apple', 'red apple'];
 
-            var expectedItems = ['apple', 'green apple', 'red apple'];
-            page.getTipItems().each(function(tipItem, index) {
-                expect(tipItem.getText()).toBe(expectedItems[index]);
-            });
+            page.checkTipItemsCount(3)
+            page.checkTipItems(expectedTipItems);
 
         });
 
         it('maximum 5 tips can appear in dropdown', function() {
 
             page.typeTextInInput('r');
-            expect(page.getTipItemsCount()).toBe(5);
+            var expectedTipItems = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
 
-            var expectedItems = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
+            page.checkTipItemsCount(5)
+            page.checkTipItems(expectedTipItems);
+        });
 
-            page.getTipItems().each(function(tipItem, index) {
-                expect(tipItem.getText()).toBe(expectedItems[index]);
-            });
+        it('if tip does not exist dropdown is empty', function() {
+
+            page.typeTextInInput('popopo');
+
+            page.checkTipItemsCount(0);
+            expect(page.getInputText()).toBe("");
         });
 
         it('check navigation via tips using keyboard. ArrowDown', function() {
             page.typeTextInInput('r');
-            var expectedActiveItems = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
+            var expectedActiveTips = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
 
-            for(var i = 0; i < 5; i++){
+            for(var i = 0; i < expectedActiveTips.length; i++){
                 page.clickArrowDown();
 
-                var actualActiveItems = page.getTipItems().filter(function(tip, index){
-                  return page.tipContainsClass(index, 'active');
-                });
+                var actualActiveTips = page.getActiveTips();
 
-                expect(actualActiveItems.count()).toBe(1);
-                expect(actualActiveItems.get(0).getText()).toBe(expectedActiveItems[i]);
+                expect(actualActiveTips.count()).toBe(1);
+                expect(actualActiveTips.get(0).getText()).toBe(expectedActiveTips[i]);
             }
         });
 
         it('check navigation via tips using keyboard. ArrowUp', function() {
             page.typeTextInInput('r');
-            var expectedActiveItems = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
-            var itemsCount = expectedActiveItems.length;
+            var expectedActiveTips = ['cherry', 'orange', 'cucumber', 'green apple', 'red apple'];
+            var itemsCount = expectedActiveTips.length;
 
             for(var i = 0; i < itemsCount ; i++){
                 page.clickArrowUp();
 
-                var actualActiveItems = page.getTipItems().filter(function(tip, index){
-                  return page.tipContainsClass(index, 'active');
-                });
+                var actualActiveTips = page.getActiveTips();
 
-                expect(actualActiveItems.count()).toBe(1);
-                expect(actualActiveItems.get(0).getText()).toBe(expectedActiveItems[itemsCount - 1 - i]);
+                expect(actualActiveTips.count()).toBe(1);
+                expect(actualActiveTips.get(0).getText()).toBe(expectedActiveTips[itemsCount - 1 - i]);
               }
         });
 
         it('select tip on mouseclick', function() {
             page.typeTextInInput('r');
             page.mouseClickOnElement(page.getTipItem(0));
-            setTimeout(function() {
-                expect(page.getInputText()).toBe("cherry");
-            }, 3000);
+            var EC = protractor.ExpectedConditions;
+            browser.wait(EC.textToBePresentInElementValue($('#input'), ' cherry, '), 1000);
         });
 
         it('select several tips on mouseclick', function() {
-            var textsToType = ['r', 'p', 'a'];
-            var expectedInputTexts = ['cherry,', 'cherry, potato,', 'cherry, potato, apple'];
+            var textsToType = ['r', 'po', 'a'];
+            var expectedInputTexts = [' cherry, ', 'cherry, potato, ', 'cherry, potato, apple, '];
+            var EC = protractor.ExpectedConditions;
             textsToType.forEach(function(textToType, index) {
                 page.typeTextInInput(textToType);
-                setTimeout(function() {
-                    expect(page.getInputText()).toBe(expectedInputTexts[index]);
-                }, 3000);
+                page.mouseClickOnElement(page.getTipItem(0));
+                browser.wait(EC.textToBePresentInElementValue($('#input'), 
+                expectedInputTexts[index]), 1000);
             });
         });
 

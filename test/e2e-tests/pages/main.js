@@ -1,7 +1,8 @@
 'use strict';
 
 var mainPage = function(){
-  var input = element(by.model('query'));
+  var input = element(by.id('input'));
+  var inputSelector = "$('#input')";
   var tipItems = element.all(by.css('.inputWithTips li'));
   var submitButton = element(by.buttonText('Send'));
 
@@ -11,6 +12,7 @@ var mainPage = function(){
 
   this.getInputText = function(){
   	return input.getText();
+
   };
 
   this.getTipItems = function(){
@@ -53,6 +55,23 @@ var mainPage = function(){
 
   this.submit = function(){
   	submitButton.click();
+  };
+
+  this.checkTipItemsCount = function(expectedCount){
+     expect(this.getTipItemsCount()).toBe(expectedCount);
+  }
+
+  this.checkTipItems = function(expectedTipItems){
+      this.getTipItems().each(function(tipItem, index) {
+        expect(tipItem.getText()).toBe(expectedTipItems[index]);
+      });
+  }
+
+  this.getActiveTips = function(){
+    var self = this;
+     return this.getTipItems().filter(function(tip, index){
+      return self.tipContainsClass(index, 'active');
+    });
   }
 };
 
